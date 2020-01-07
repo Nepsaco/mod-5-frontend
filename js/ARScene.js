@@ -32,11 +32,12 @@ export default class ARScene extends Component {
         isTracking: false,
         initialized: false,
         runAnimation: false,
-        targetImage: ''
+        targetImage: 'flatironLogo'
     };
 
     getARScene = () => {
         const { targetImage, runAnimation } = this.state
+        console.log(this.state)
         return(
             <ViroNode>
                 <ViroARImageMarker target={targetImage}
@@ -170,7 +171,7 @@ const styles = StyleSheet.create({
 
 ViroARTrackingTargets.createTargets({
     'flatironLogo': {
-        source: require('./res/Flatiron-Logo.png'),
+        source: require('./res/Flatiron_Logo.png'),
         orientation: 'Up',
         physicalWidth: 0.05
     }, 
