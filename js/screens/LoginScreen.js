@@ -4,9 +4,6 @@ import LoginForm from '../components/LoginForm'
 import { styles } from '../components/styles'
 
 export default class LoginScreen extends Component {
-    state = {
-        login: false
-    }
 
     render(){
         return this.getLogin()
@@ -21,10 +18,10 @@ export default class LoginScreen extends Component {
                             style={styles.logo}
                             source={require('../res/avatar.png')} 
                         />
-                        <Text style={styles.title}>App made for AR</Text>
+                        <Text style={styles.title}>App to get a little more information</Text>
                     </View>
                     <View style={styles.formContainer}>
-                        <LoginForm />
+                        <LoginForm login={this.props.login} />
                     </View>
                 </View>
             </KeyboardAvoidingView>

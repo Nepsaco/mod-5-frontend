@@ -4,7 +4,9 @@ const colors = {
     dark: '#1b262c',
     navy: '#0f4c75',
     blue: '#3282b8',
-    light: '#bbe1fa'
+    light: '#bbe1fa',
+    grey: '#6699CC',
+    white: '#FFF'
 }
 
 const styles = StyleSheet.create({
@@ -13,33 +15,61 @@ const styles = StyleSheet.create({
         padding: 20
     },
 
-    input: {
-        height: 40,
-        backgroundColor: 'rgba(255,255,255,0.2)',
-        marginBottom: 10,
-        color: '#FFF',
-        paddingHorizontal: 30,
+    titleText: {
+        color: colors.white,
+        fontSize: 50,
+        fontWeight: 'bold'
     },
 
-    buttonContainer: {
-        backgroundColor: '#2980b9',
-        paddingVertical: 15
+    outer : {
+        flex : 1,
+        flexDirection: 'row',
+        alignItems:'center',
+        backgroundColor: colors.dark,
+    },
+
+    inner: {
+        flex : 1,
+        flexDirection: 'column',
+        alignItems:'center',
+        backgroundColor: colors.dark,
+    },
+
+    input: {
+        height: 40,
+        width: 150,
+        backgroundColor: colors.grey,
+        marginBottom: 10,
+        color: colors.white,
+        paddingHorizontal: 30,
+        opacity: 0.7
     },
 
     buttonText: {
-        textAlign: 'center',
-        color: '#FFF',
+        color: colors.white,
         fontWeight: '700'
+    },
+
+    buttons : {
+        width: 150,
+        paddingTop:20,
+        paddingBottom:20,
+        marginTop: 10,
+        marginBottom: 10,
+        backgroundColor: colors.navy,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: colors.light,
     },
 
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#3498db'
+        backgroundColor: colors.dark
     },
 
     buttonText: {
-        color: '#fff',
+        color: colors.white,
         textAlign: 'center',
         fontSize: 20
     }, 
@@ -51,10 +81,10 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         marginTop: 10,
         marginBottom: 10,
-        backgroundColor: '#1ecfc9',
+        backgroundColor: colors.blue,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: '#fff'
+        borderColor: colors.white
     },
 
     logoContainer: {
@@ -69,7 +99,7 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        color: '#fff',
+        color: colors.white,
         marginTop: 10,
         width: 160,
         textAlign: 'center',
