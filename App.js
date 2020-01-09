@@ -12,6 +12,8 @@ import {
 import {
     ViroARSceneNavigator,
 } from 'react-viro';
+// import NavigatorContainer from './NavigatorContainer'
+// import MainTabNavigator from './js/navigation/MainTabNavigator'
 import HomeScreen from './js/screens/HomeScreen'
 import LoginScreen from './js/screens/LoginScreen'
 import styles from './js/components/styles'
