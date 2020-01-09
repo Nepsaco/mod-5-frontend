@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 
 import {
     ViroARScene,
@@ -37,7 +37,6 @@ export default class ARScene extends Component {
 
     getARScene = () => {
         const { targetImage, runAnimation } = this.state
-        console.log(this.state)
         return(
             <ViroNode>
                 <ViroARImageMarker target={targetImage}
@@ -143,35 +142,35 @@ export default class ARScene extends Component {
 }
 
 const styles = StyleSheet.create({
-  textStyle: {
-    flex: .5,
-    fontFamily: 'Roboto',
-    fontSize: 30,
-    color: '#ffffff',
-    textAlignVertical: 'top',
-    textAlign: 'left',
-    fontWeight: 'bold',
-  },
-  card: {
-    flexDirection: 'column'
-  },
-  cardWrapper: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    padding: 0.001,
-    flex: .5
-  },
-  subText: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    flex: .5
-  }
+    textStyle: {
+        flex: .5,
+        fontFamily: 'Roboto',
+        fontSize: 30,
+        color: '#ffffff',
+        textAlignVertical: 'top',
+        textAlign: 'left',
+        fontWeight: 'bold',
+    },
+    card: {
+        flexDirection: 'column'
+    },
+    cardWrapper: {
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        padding: 0.001,
+        flex: .5
+    },
+    subText: {
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        flex: .5
+    }
 });
 
 ViroARTrackingTargets.createTargets({
     'flatironLogo': {
-        source: require('./res/Flatiron_Logo.png'),
+        source: require('./res/flatpic.JPG'),
         orientation: 'Up',
         physicalWidth: 0.05
     }, 

@@ -12,7 +12,10 @@ import {
 import {
     ViroARSceneNavigator,
 } from 'react-viro';
+import HomeScreen from './js/screens/HomeScreen'
+import LoginScreen from './js/screens/LoginScreen'
 
+const BASE_URL = 'http://localhost:3000'
 const sharedProps = {
     apiKey:"API_KEY_HERE",
 }
@@ -23,39 +26,59 @@ const AR_NAVIGATOR_TYPE = "AR";
 
 
 export default class ViroSample extends Component {
-        state = {
-            login: false,
-            sharedProps : sharedProps
-         }
+    state = {
+        login: false,
+        sharedProps : sharedProps,
+        users: [],
+        assets: []
+    }
+
+    onComponentDidMount = () => {
+        Promise.all([
+            fetch(`${BASE_URL}/users`).then(response => response.json()),
+            fetch(`${BASE_URL}/assets`).then(response => response.json())
+        ])
+            .then(([users, assets]) => {
+                console.log(assets)
+                this.setState({
+                    users,
+                    assets
+                })
+            })
+    }
 
     render() {
         const { login } = this.state
         return(
             <>
-            {!login ?  this._getARNavigator() : this._getLogin()}
+                {login ?  this._getHomeScreen() : this._getLogin()}
             </>
         )
     }
 
+    handelPress = () => {
+        this.setState
+    }
+
+    _getHomeScreen = () => {
+        return(
+            <HomeScreen />
+        )
+    }
+
     _getLogin = () => {
-        return (
-            <View style={localStyles.outer} >
-                <View style={localStyles.inner} >
-                    <Text style={localStyles.titleText}>
-                        Welcome to Art Info!
-                    </Text>
-                    <Text>
-                        Login
-                    </Text>
-                </View>
-            </View>
-        );
+        return(
+            <LoginScreen />
+        )
     }
 
     _getARNavigator = () => {
         return (
-            <ViroARSceneNavigator {...this.state.sharedProps}
-                initialScene={{scene: InitialARScene}} />
+            <ViroARSceneNavigator 
+                {...this.state.sharedProps}
+                assets={this.state.assests}
+                initialScene={{scene: InitialARScene}} 
+            />
         );
     }
 }
