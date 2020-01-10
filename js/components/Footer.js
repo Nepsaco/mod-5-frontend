@@ -1,14 +1,47 @@
 import React from 'react'
-import { View, TouchableOpacity, Icon } from 'react-native'
+import { View, TouchableOpacity, Text, KeyboardAvoidingView } from 'react-native'
 import { styles } from '../components/styles'
 
-export default function Footer() {
+export default class Foot extends React.Component{
 
+    goToAR = () => {
+        this.props.changeScreen('ar')
+    }
+
+    goToHome = () => {
+        this.props.changeScreen('home')
+    }
+
+    render(){
         return(
-            <View style={styles.outer}>
-                <TouchableOpacity >
-                    <Icon name='Home' />
-                </TouchableOpacity >
+            <View style={styles.footerContainer}>
+                <TouchableOpacity style={styles.tabBar} >
+                    <Text 
+                        style={styles.buttonText}
+                        onPress={this.goToHome}
+                    >
+                        HOME                        
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.tabBar} >
+                    <Text 
+                        style={styles.buttonText}
+                        onPress={this.goToAR}
+                    >
+                        AR
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.tabBar} >
+                    <Text 
+                        style={styles.buttonText}
+                        onPress={this.goToAR}
+                    >
+                        PROFILE
+                    </Text>
+                </TouchableOpacity>
             </View>
         )
+
+    }
 }
+

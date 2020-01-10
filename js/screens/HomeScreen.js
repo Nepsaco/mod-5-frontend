@@ -8,13 +8,13 @@ export default class HomeScreen extends Component {
 
     getHomeSceen = () => {
         return (
-            <View style={styles.outer} >
-                <View style={styles.inner} >
+            <View style={styles.screenContainer} >
+                <View style={styles.screenContainer} >
                     <Text style={styles.titleText}>
                         Welcome to Badge
                     </Text>
                 </View>
-                <Footer />
+                <Footer changeScreen={this.props.changeScreen}/>
             </View>
         )
     }

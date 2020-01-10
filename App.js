@@ -7,6 +7,7 @@ import {
     StyleSheet,
     PixelRatio,
     TouchableHighlight,
+    TouchableOpacity
 } from 'react-native';
 
 import {
@@ -19,6 +20,7 @@ import LoginScreen from './js/screens/LoginScreen'
 import SignInScreen from './js/screens/SignInScreen'
 const InitialARScene = require('./js/ARScene');
 import Footer from './js/components/Footer'
+import { styles } from './js/components/styles'
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -30,18 +32,11 @@ export default class ViroSample extends Component {
         assets: []
     }
 
-    // onComponentDidMount = () => {
-    //     Promise.all([
-    //         fetch(`${BASE_URL}/users`).then(response => response.json()),
-    //         fetch(`${BASE_URL}/assets`).then(response => response.json())
-    //     ])
-    //         .then(([users, assets]) => {
-    //             this.setState({
-    //                 users,
-    //                 assets
-    //             })
-    //         })
-    // }
+    componentDidMount = () => {
+        fetch(`${BASE_URL}/assets`)
+            .then(response => response.json())
+            .then(response => console.warn(response))
+    }
 
 
 
@@ -71,11 +66,17 @@ export default class ViroSample extends Component {
 
     _getARNavigator = () => {
         return (
-            <ViroARSceneNavigator 
-                {...this.state.sharedProps}
-                assets={this.state.assests}
-                initialScene={{scene: InitialARScene}} 
-            />
+            <View style={styles.flexContainer}>
+                <ViroARSceneNavigator 
+                    style={styles.flexContainer}
+                    {...this.state.sharedProps}
+                    assets={this.state.assests}
+                    initialScene={{scene: InitialARScene}} 
+                />
+                <Footer  
+                    changeScreen={this.changeScreen}
+                />
+            </View>
         ) 
     }
 
@@ -96,7 +97,7 @@ export default class ViroSample extends Component {
             case 'logIn':
                 return this._getLogin()
             default: 
-                return this._getHomeScreen()
+                return this._getLogin()
         }
     }
 

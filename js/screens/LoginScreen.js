@@ -25,14 +25,16 @@ export default class LoginScreen extends Component {
                             name={'LOGIN'}
                             changeScreen={this.props.changeScreen}
                         />
-                        <TouchableOpacity style={styles.buttons} >
-                            <Text 
-                                style={styles.buttonText}
-                                onPress={this.goToSignIn}
-                            >
-                                SIGN UP
-                            </Text>
-                        </TouchableOpacity>
+                        <View style={styles.buttonContainer}>
+                            <TouchableOpacity style={styles.buttons} >
+                                <Text 
+                                    style={styles.buttonText}
+                                    onPress={this.goToSignIn}
+                                >
+                                    SIGN UP
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
             </KeyboardAvoidingView>

@@ -11,6 +11,10 @@ const colors = {
 
 const styles = StyleSheet.create({
 
+    flexContainer: {
+        flex: 1
+    },
+
     loginContainer: {
         flex: 1,
         alignItems: 'center',
@@ -24,6 +28,7 @@ const styles = StyleSheet.create({
     },
 
     formContainer: {
+        flex: 2,
         padding: 10
     },
 
@@ -42,7 +47,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
 
-    outer : {
+    screenOuter : {
         flex : 1,
         flexDirection: 'row',
         alignItems:'center',
@@ -68,24 +73,6 @@ const styles = StyleSheet.create({
 
     buttonText: {
         color: colors.white,
-        fontWeight: '700'
-    },
-
-    buttons : {
-        width: 150,
-        paddingTop:20,
-        paddingBottom:20,
-        marginTop: 10,
-        marginBottom: 10,
-        backgroundColor: colors.navy,
-        borderRadius: 10,
-        borderWidth: 1,
-        borderColor: colors.light,
-    },
-
-
-    buttonText: {
-        color: colors.white,
         textAlign: 'center',
         fontSize: 20
     }, 
@@ -100,9 +87,13 @@ const styles = StyleSheet.create({
         backgroundColor: colors.blue,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: colors.white
+        borderColor: colors.dark,
     },
 
+    buttonContainer: {
+        flex: 1,
+        alignItems: 'center'
+    },
 
     title: {
         color: colors.white,
@@ -111,6 +102,29 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         opacity: 0.8
     },
+
+    screenContainer: {
+        flex: 4,
+        flexDirection: 'column',
+        backgroundColor: colors.dark,
+    },
+
+    footerContainer: {
+        flex: -1,
+        flexDirection: 'row'
+    },
+
+    tabBar: {
+        height: 60,
+        width: 140,
+        paddingTop: 17,
+        paddingBottom: 10,
+        marginTop: 10,
+        marginBottom: 10,
+        backgroundColor: colors.blue,
+        borderWidth: 0.5,
+        borderColor: colors.dark
+    }
 })
 
 export{ styles }
