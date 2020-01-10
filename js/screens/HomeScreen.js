@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { Text, TextInput, View, Button, Image, TouchableHighlight, StyleSheet,ImageBackground } from 'react-native';
 import { styles } from '../components/styles'
+import Footer from '../components/Footer'
+
 
 export default class HomeScreen extends Component {
-    render(){
-        return this.getHomeSceen()
-    }
 
     getHomeSceen = () => {
         return (
@@ -15,8 +14,13 @@ export default class HomeScreen extends Component {
                         Welcome to Badge
                     </Text>
                 </View>
+                <Footer />
             </View>
         )
+    }
+
+    render(){
+        return this.getHomeSceen()
     }
 
 }

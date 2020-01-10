@@ -11,6 +11,27 @@ const colors = {
 
 const styles = StyleSheet.create({
 
+    loginContainer: {
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: colors.dark,
+    },
+
+    logoContainer: {
+        alignItems: 'center',
+        flexGrow: 1,
+        justifyContent: 'center'
+    },
+
+    formContainer: {
+        padding: 10
+    },
+
+    logo: {
+        width: 100,
+        height: 100
+    },
+
     topPadding: {
         padding: 20
     },
@@ -62,11 +83,6 @@ const styles = StyleSheet.create({
         borderColor: colors.light,
     },
 
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: colors.dark
-    },
 
     buttonText: {
         color: colors.white,
@@ -87,16 +103,6 @@ const styles = StyleSheet.create({
         borderColor: colors.white
     },
 
-    logoContainer: {
-        alignItems: 'center',
-        flexGrow: 1,
-        justifyContent: 'center'
-    },
-
-    logo: {
-        width: 100,
-        height: 100
-    },
 
     title: {
         color: colors.white,

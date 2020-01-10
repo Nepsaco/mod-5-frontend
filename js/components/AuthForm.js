@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, View, TextInput, TouchableOpacity, Text, Button, Alert } from 'react-native'
 import { styles } from './styles'
 
-export default class LoginForm extends Component {
+export default class AuthForm extends Component {
 
     state ={
         username: '',
@@ -11,11 +11,13 @@ export default class LoginForm extends Component {
 
     onLogin = ( event ) => {
         const { username, password } = this.state
-        this.props.login()
+        const { changeScreen } = this.props
+        changeScreen('home')
     }
 
     render(){
         const { password, username } = this.state
+        const { name } = this.props
         return(
             <View style={styles.topPadding}>
                 <TextInput 
@@ -39,12 +41,11 @@ export default class LoginForm extends Component {
                     ref={(input) => this.passwordInput = input}
                     required
                 />
-                <TouchableOpacity style={styles.buttons} onPress={this.handlePress}>
+                <TouchableOpacity style={styles.buttons} onPress={this.onLogin}>
                     <Text 
                         style={styles.buttonText}
-                        onPress={this.onLogin}
                     >
-                        LOGIN
+                        {name} 
                     </Text>
                 </TouchableOpacity>
             </View>
