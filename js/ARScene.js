@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, Alert} from 'react-native';
 
 import {
     ViroARScene,
@@ -28,18 +28,19 @@ import {
 export default class ARScene extends Component {
 
     state = {
-        text : "Initializing AR...",
+        text : "scan a sticker...",
         isTracking: false,
         initialized: false,
         runAnimation: false,
-        targetImage: 'flatironLogo'
+        targetImage: 'whaleshark'
     };
 
     getARScene = () => {
         const { targetImage, runAnimation } = this.state
+        // const { id, title, resource_url, social_url, website } = this.props.arSceneNavigator.viroAppProps['0']
         return(
             <ViroNode>
-                <ViroARImageMarker target={targetImage}
+                <ViroARImageMarker target={'rmn'}
                     onAnchorFound={
                         () => this.setState({
                             runAnimation: true
@@ -66,17 +67,17 @@ export default class ARScene extends Component {
                                         height={0.015}
                                         width={0.015}
                                         style={styles.image}
-                                        source={require('./res/avatar.png')}
+                                        source={require('./res/download.jpeg')}
                                     />
                                     <ViroText
                                         textClipMode="None"
-                                        text="Vladimir Novick"
+                                        text={'RetailMeNot, Inc.'}
                                         scale={[.015, .015, .015]}
                                         style={styles.textStyle}
                                     />
                                 </ViroFlexView>
                                 <ViroFlexView
-                                    onTouch={() => alert("twitter")}
+                                    onTouch={() => Alert.alert("HI")}
                                     style={styles.subText}
                                 >
                                     <ViroText
@@ -84,15 +85,15 @@ export default class ARScene extends Component {
                                         height={0.01}
                                         textAlign="left"
                                         textClipMode="None"
-                                        text="@VladimirNovick"
+                                        text={'@RetailMeNot'}
                                         scale={[.01, .01, .01]}
                                         style={styles.textStyle}
                                     />
-                                    <ViroAnimatedImage
+                                    <ViroImage
                                         height={0.01}
                                         width={0.01}
-                                        loop={true}
-                                        source={require('./res/tweet.gif')}
+                                        style={styles.image}
+                                        source={require('./res/Instagram.png')}
                                     />
                                 </ViroFlexView>
                             </ViroFlexView>
@@ -103,7 +104,295 @@ export default class ARScene extends Component {
                                 run: runAnimation
                             }}
                         >
-                            <ViroText text="www.viromedia.com"
+                            <ViroText text="www.RetailMeNot.com"
+                                rotation={[-90, 0, 0]}
+                                scale={[.01, .01, .01]}
+                                style={styles.textStyle}
+                            />
+                        </ViroNode>
+                    </ViroNode>
+                </ViroARImageMarker>
+                <ViroARImageMarker target={'whaleshark'}
+                    onAnchorFound={
+                        () => this.setState({
+                            runAnimation: true
+                        })}
+                >
+                    <ViroNode key="card">
+                        <ViroNode
+                            opacity={0} position={[0, -0.02, 0]}
+                            animation={{
+                                name:'animateImage',
+                                run: runAnimation
+                            }}
+                        >
+                            <ViroFlexView
+                                rotation={[-90, 0, 0]}
+                                height={0.03}
+                                width={0.05}
+                                style={styles.card}
+                            >
+                                <ViroFlexView
+                                    style={styles.cardWrapper}
+                                >
+                                    <ViroImage
+                                        height={0.015}
+                                        width={0.015}
+                                        style={styles.image}
+                                        source={require('./res/download.jpeg')}
+                                    />
+                                    <ViroText
+                                        textClipMode="None"
+                                        text={'WhaleShark Media'}
+                                        scale={[.015, .015, .015]}
+                                        style={styles.textStyle}
+                                    />
+                                </ViroFlexView>
+                                <ViroFlexView
+                                    onTouch={() => Alert.alert("twitter")}
+                                    style={styles.subText}
+                                >
+                                    <ViroText
+                                    width={0.01}
+                                    height={0.01}
+                                    textAlign="left"
+                                    textClipMode="None"
+                                    text={'@WhaleShark'}
+                                    scale={[.01, .01, .01]}
+                                    style={styles.textStyle}
+                                    />
+                                    <ViroImage
+                                        height={0.01}
+                                        width={0.01}
+                                        style={styles.image}
+                                        source={require('./res/Instagram.png')}
+                                    />
+                                </ViroFlexView>
+                            </ViroFlexView>
+                        </ViroNode>
+                        <ViroNode opacity={0} position={[0, 0, 0]}
+                            animation={{
+                                name:'animateViro',
+                                run: runAnimation
+                            }}
+                        >
+                            <ViroText text="www.whalesharkmedia.com"
+                                rotation={[-90, 0, 0]}
+                                scale={[.01, .01, .01]}
+                                style={styles.textStyle}
+                            />
+                        </ViroNode>
+                    </ViroNode>
+                </ViroARImageMarker>
+                <ViroARImageMarker target={'bredkrum'}
+                    onAnchorFound={
+                        () => this.setState({
+                            runAnimation: true
+                        })}
+                >
+                    <ViroNode key="card">
+                        <ViroNode
+                            opacity={0} position={[0, -0.02, 0]}
+                            animation={{
+                                name:'animateImage',
+                                run: runAnimation
+                            }}
+                        >
+                            <ViroFlexView
+                                rotation={[-90, 0, 0]}
+                                height={0.03}
+                                width={0.05}
+                                style={styles.card}
+                            >
+                                <ViroFlexView
+                                    style={styles.cardWrapper}
+                                >
+                                    <ViroImage
+                                        height={0.015}
+                                        width={0.015}
+                                        style={styles.image}
+                                        source={require('./res/download.jpeg')}
+                                    />
+                                    <ViroText
+                                        textClipMode="None"
+                                        text={'Bredkrum'}
+                                        scale={[.015, .015, .015]}
+                                        style={styles.textStyle}
+                                    />
+                                </ViroFlexView>
+                                <ViroFlexView
+                                    onTouch={() => Alert.alert("HI")}
+                                    style={styles.subText}
+                                >
+                                    <ViroText
+                                        width={0.01}
+                                        height={0.01}
+                                        textAlign="left"
+                                        textClipMode="None"
+                                        text={'@bredkrum'}
+                                        scale={[.01, .01, .01]}
+                                        style={styles.textStyle}
+                                    />
+                                    <ViroImage
+                                        height={0.01}
+                                        width={0.01}
+                                        style={styles.image}
+                                        source={require('./res/Instagram.png')}
+                                    />
+                                </ViroFlexView>
+                            </ViroFlexView>
+                        </ViroNode>
+                        <ViroNode opacity={0} position={[0, 0, 0]}
+                            animation={{
+                                name:'animateViro',
+                                run: runAnimation
+                            }}
+                        >
+                            <ViroText text="www.bredkrum.com"
+                                rotation={[-90, 0, 0]}
+                                scale={[.01, .01, .01]}
+                                style={styles.textStyle}
+                            />
+                        </ViroNode>
+                    </ViroNode>
+                </ViroARImageMarker>
+                <ViroARImageMarker target={'zoom'}
+                    onAnchorFound={
+                        () => this.setState({
+                            runAnimation: true
+                        })}
+                >
+                    <ViroNode key="card">
+                        <ViroNode
+                            opacity={0} position={[0, -0.02, 0]}
+                            animation={{
+                                name:'animateImage',
+                                run: runAnimation
+                            }}
+                        >
+                            <ViroFlexView
+                                rotation={[-90, 0, 0]}
+                                height={0.03}
+                                width={0.05}
+                                style={styles.card}
+                            >
+                                <ViroFlexView
+                                    style={styles.cardWrapper}
+                                >
+                                    <ViroImage
+                                        height={0.015}
+                                        width={0.015}
+                                        style={styles.image}
+                                        source={require('./res/download.jpeg')}
+                                    />
+                                    <ViroText
+                                        textClipMode="None"
+                                        text={'Zoom'}
+                                        scale={[.015, .015, .015]}
+                                        style={styles.textStyle}
+                                    />
+                                </ViroFlexView>
+                                <ViroFlexView
+                                    onTouch={() => Alert.alert("HI")}
+                                    style={styles.subText}
+                                >
+                                    <ViroText
+                                        width={0.01}
+                                        height={0.01}
+                                        textAlign="left"
+                                        textClipMode="None"
+                                        text={'@zoom'}
+                                        scale={[.01, .01, .01]}
+                                        style={styles.textStyle}
+                                    />
+                                    <ViroImage
+                                        height={0.01}
+                                        width={0.01}
+                                        style={styles.image}
+                                        source={require('./res/Instagram.png')}
+                                    />
+                                </ViroFlexView>
+                            </ViroFlexView>
+                        </ViroNode>
+                        <ViroNode opacity={0} position={[0, 0, 0]}
+                            animation={{
+                                name:'animateViro',
+                                run: runAnimation
+                            }}
+                        >
+                            <ViroText text="www.zoom.us"
+                                rotation={[-90, 0, 0]}
+                                scale={[.01, .01, .01]}
+                                style={styles.textStyle}
+                            />
+                        </ViroNode>
+                    </ViroNode>
+                </ViroARImageMarker>
+                <ViroARImageMarker target={'flatiron'}
+                    onAnchorFound={
+                        () => this.setState({
+                            runAnimation: true
+                        })}
+                >
+                    <ViroNode key="card">
+                        <ViroNode
+                            opacity={0} position={[0, -0.02, 0]}
+                            animation={{
+                                name:'animateImage',
+                                run: runAnimation
+                            }}
+                        >
+                            <ViroFlexView
+                                rotation={[-90, 0, 0]}
+                                height={0.03}
+                                width={0.05}
+                                style={styles.card}
+                            >
+                                <ViroFlexView
+                                    style={styles.cardWrapper}
+                                >
+                                    <ViroImage
+                                        height={0.015}
+                                        width={0.015}
+                                        style={styles.image}
+                                        source={require('./res/download.jpeg')}
+                                    />
+                                    <ViroText
+                                        textClipMode="None"
+                                        text={'Flatiron School'}
+                                        scale={[.015, .015, .015]}
+                                        style={styles.textStyle}
+                                    />
+                                </ViroFlexView>
+                                <ViroFlexView
+                                    onTouch={() => Alert.alert("HI")}
+                                    style={styles.subText}
+                                >
+                                    <ViroText
+                                        width={0.01}
+                                        height={0.01}
+                                        textAlign="left"
+                                        textClipMode="None"
+                                        text={'@flatironschool'}
+                                        scale={[.01, .01, .01]}
+                                        style={styles.textStyle}
+                                    />
+                                    <ViroImage
+                                        height={0.01}
+                                        width={0.01}
+                                        style={styles.image}
+                                        source={require('./res/Instagram.png')}
+                                    />
+                                </ViroFlexView>
+                            </ViroFlexView>
+                        </ViroNode>
+                        <ViroNode opacity={0} position={[0, 0, 0]}
+                            animation={{
+                                name:'animateViro',
+                                run: runAnimation
+                            }}
+                        >
+                            <ViroText text="www.flatironschool.com"
                                 rotation={[-90, 0, 0]}
                                 scale={[.01, .01, .01]}
                                 style={styles.textStyle}
@@ -123,10 +412,12 @@ export default class ARScene extends Component {
     }
 
     render() {
-        const { text, isTracking } = this.state
+        // const prop = this.props.arSceneNavigator.viroAppProps.assets[0]
+        // console.warn('tobie', prop.title)
+        const { isTracking } = this.state
         return (
             <ViroARScene onTrackingUpdated={this._onInitialized} >
-                {isTracking ? this.getNoTrackingUI() : this.getARScene()}
+                {isTracking ? this.getNoTrackingUI() :this.getARScene()}
             </ViroARScene>
         );
     }
@@ -143,9 +434,9 @@ export default class ARScene extends Component {
 
 const styles = StyleSheet.create({
     textStyle: {
-        flex: .5,
+        flex: 1,
         fontFamily: 'Roboto',
-        fontSize: 30,
+        fontSize: 40,
         color: '#ffffff',
         textAlignVertical: 'top',
         textAlign: 'left',
@@ -160,6 +451,10 @@ const styles = StyleSheet.create({
         padding: 0.001,
         flex: .5
     },
+    image: {
+        padding:0.001,
+        flex: 1
+    },
     subText: {
         flexDirection: 'column',
         alignItems: 'flex-start',
@@ -169,16 +464,31 @@ const styles = StyleSheet.create({
 });
 
 ViroARTrackingTargets.createTargets({
-    'flatironLogo': {
+    'flatiron': {
         source: require('./res/flatpic.JPG'),
         orientation: 'Up',
-        physicalWidth: 0.05
+        physicalWidth: 0.0762
     }, 
-    'businessCard':{
-        source: require('./res/business_card.png'),
+    'zoom': {
+        source:  require('./res/zoom.JPG'),
         orientation: 'Up',
-        physicalWidth: 0.07
-    }
+        physicalWidth: 0.1
+    },
+    'bredkrum': {
+        source:  require('./res/bredkrum.JPG'),
+        orientation: 'Up',
+        physicalWidth: 0.1
+    },
+    'rmn': {
+        source:  require('./res/RMN.JPG'),
+        orientation: 'Up',
+        physicalWidth: 0.0762
+    },
+    'whaleshark': {
+        source:  require('./res/whaleshark.JPG'),
+        orientation: 'Up',
+        physicalWidth: 0.0762
+    },
 })
 
 ViroMaterials.createMaterials({

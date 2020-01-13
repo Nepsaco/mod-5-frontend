@@ -18,22 +18,25 @@ export default class SignInScreen extends Component {
                     <View style={styles.logoContainer}>
                         <Image 
                             style={styles.logo}
-                            source={require('../res/avatar.png')} 
+                            source={require('../res/download.jpeg')} 
                         />
                         <Text style={styles.title}>Sign Up</Text>
                     </View>
                     <View style={styles.formContainer}>
                         <AuthForm 
                             name={'SIGN UP'}
+                            changeScreen={this.props.changeScreen}
                         />
-                        <TouchableOpacity style={styles.buttons} >
-                            <Text 
-                                style={styles.buttonText}
-                                onPress={this.goToLogin}
-                            >
-                                LOGIN
-                            </Text>
-                        </TouchableOpacity>
+                        <View style={styles.buttonContainer}>
+                            <TouchableOpacity style={styles.buttons} >
+                                <Text 
+                                    style={styles.buttonText}
+                                    onPress={this.goToLogin}
+                                >
+                                    LOGIN
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
             </KeyboardAvoidingView>

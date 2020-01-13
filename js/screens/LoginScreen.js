@@ -16,7 +16,7 @@ export default class LoginScreen extends Component {
                     <View style={styles.logoContainer}>
                         <Image 
                             style={styles.logo}
-                            source={require('../res/avatar.png')} 
+                            source={require('../res/download.jpeg')} 
                         />
                         <Text style={styles.title}>App to get a little more information</Text>
                     </View>

@@ -23,19 +23,20 @@ import Footer from './js/components/Footer'
 import { styles } from './js/components/styles'
 
 const BASE_URL = 'http://localhost:3000'
+const HEROKU = 'https://badges-1.herokuapp.com/'
 
 
 export default class ViroSample extends Component {
     state = {
-        navigation: '',
+        navigation: 'ar',
         users: [],
         assets: []
     }
 
     componentDidMount = () => {
-        fetch(`${BASE_URL}/assets`)
+        return fetch(`${HEROKU}/assets`)
             .then(response => response.json())
-            .then(response => console.warn(response))
+            .then(assets => { this.setState({ assets }) })
     }
 
 
@@ -69,9 +70,9 @@ export default class ViroSample extends Component {
             <View style={styles.flexContainer}>
                 <ViroARSceneNavigator 
                     style={styles.flexContainer}
-                    {...this.state.sharedProps}
-                    assets={this.state.assests}
-                    initialScene={{scene: InitialARScene}} 
+                    numberOfTrackedImages={2}
+                    viroAppProps={{assets: this.state.assets}}
+                    initialScene={{scene: InitialARScene, passProps:{assets:this.state.assets}}} 
                 />
                 <Footer  
                     changeScreen={this.changeScreen}
