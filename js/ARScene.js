@@ -40,6 +40,78 @@ export default class ARScene extends Component {
         // const { id, title, resource_url, social_url, website } = this.props.arSceneNavigator.viroAppProps['0']
         return(
             <ViroNode>
+                <ViroARImageMarker target={'wework'}
+                    onAnchorFound={
+                        () => this.setState({
+                            runAnimation: true
+                        })}
+                >
+                    <ViroNode key="card">
+                        <ViroNode
+                            opacity={0} position={[0, -0.02, 0]}
+                            animation={{
+                                name:'animateImage',
+                                run: runAnimation
+                            }}
+                        >
+                            <ViroFlexView
+                                rotation={[-90, 0, 0]}
+                                height={0.03}
+                                width={0.05}
+                                style={styles.card}
+                            >
+                                <ViroFlexView
+                                    style={styles.cardWrapper}
+                                >
+                                    <ViroImage
+                                        height={0.015}
+                                        width={0.015}
+                                        style={styles.image}
+                                        source={require('./res/weworklogo.png')}
+                                    />
+                                    <ViroText
+                                        textClipMode="None"
+                                        text={'Wework'}
+                                        scale={[.015, .015, .015]}
+                                        style={styles.textStyle}
+                                    />
+                                </ViroFlexView>
+                                <ViroFlexView
+                                    onTouch={() => Alert.alert("HI")}
+                                    style={styles.subText}
+                                >
+                                    <ViroText
+                                        width={0.01}
+                                        height={0.01}
+                                        textAlign="left"
+                                        textClipMode="None"
+                                        text={'@wework'}
+                                        scale={[.01, .01, .01]}
+                                        style={styles.textStyle}
+                                    />
+                                    <ViroImage
+                                        height={0.01}
+                                        width={0.01}
+                                        style={styles.image}
+                                        source={require('./res/Instagram.png')}
+                                    />
+                                </ViroFlexView>
+                            </ViroFlexView>
+                        </ViroNode>
+                        <ViroNode opacity={0} position={[0, 0, 0]}
+                            animation={{
+                                name:'animateViro',
+                                run: runAnimation
+                            }}
+                        >
+                            <ViroText text="www.wework.com"
+                                rotation={[-90, 0, 0]}
+                                scale={[.01, .01, .01]}
+                                style={styles.textStyle}
+                            />
+                        </ViroNode>
+                    </ViroNode>
+                </ViroARImageMarker>
                 <ViroARImageMarker target={'rmn'}
                     onAnchorFound={
                         () => this.setState({
@@ -67,7 +139,7 @@ export default class ARScene extends Component {
                                         height={0.015}
                                         width={0.015}
                                         style={styles.image}
-                                        source={require('./res/download.jpeg')}
+                                        source={require('./res/rmnlogo.png')}
                                     />
                                     <ViroText
                                         textClipMode="None"
@@ -139,7 +211,7 @@ export default class ARScene extends Component {
                                         height={0.015}
                                         width={0.015}
                                         style={styles.image}
-                                        source={require('./res/download.jpeg')}
+                                        source={require('./res/rmnlogo.png')}
                                     />
                                     <ViroText
                                         textClipMode="None"
@@ -283,7 +355,7 @@ export default class ARScene extends Component {
                                         height={0.015}
                                         width={0.015}
                                         style={styles.image}
-                                        source={require('./res/download.jpeg')}
+                                        source={require('./res/zoomlogo.png')}
                                     />
                                     <ViroText
                                         textClipMode="None"
@@ -355,7 +427,7 @@ export default class ARScene extends Component {
                                         height={0.015}
                                         width={0.015}
                                         style={styles.image}
-                                        source={require('./res/download.jpeg')}
+                                        source={require('./res/Flatiron_Logo.png')}
                                     />
                                     <ViroText
                                         textClipMode="None"
@@ -486,6 +558,11 @@ ViroARTrackingTargets.createTargets({
     },
     'whaleshark': {
         source:  require('./res/whaleshark.JPG'),
+        orientation: 'Up',
+        physicalWidth: 0.0762
+    },
+    'wework': {
+        source:  require('./res/wework.JPG'),
         orientation: 'Up',
         physicalWidth: 0.0762
     },

@@ -1,20 +1,7 @@
 import React, { Component } from 'react';
-import {
-    AppRegistry,
-    Button,
-    Text,
-    View,
-    StyleSheet,
-    PixelRatio,
-    TouchableHighlight,
-    TouchableOpacity
-} from 'react-native';
-
-import {
-    ViroARSceneNavigator,
-} from 'react-viro';
-// import NavigatorContainer from './NavigatorContainer'
-// import MainTabNavigator from './js/navigation/MainTabNavigator'
+import { AppRegistry, Button, Text, View, StyleSheet, PixelRatio, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { ViroARSceneNavigator } from 'react-viro';
+import AsyncStorage from '@react-native-community/async-storage';
 import HomeScreen from './js/screens/HomeScreen'
 import LoginScreen from './js/screens/LoginScreen'
 import SignInScreen from './js/screens/SignInScreen'
@@ -23,14 +10,15 @@ import Footer from './js/components/Footer'
 import { styles } from './js/components/styles'
 
 const BASE_URL = 'http://localhost:3000'
-const HEROKU = 'https://badges-1.herokuapp.com/'
+const HEROKU = 'https://badges-1.herokuapp.com'
 
 
-export default class ViroSample extends Component {
+export default class App extends Component {
     state = {
-        navigation: 'ar',
+        navigation: '',
         users: [],
-        assets: []
+        assets: [],
+        token: null
     }
 
     componentDidMount = () => {
@@ -39,9 +27,21 @@ export default class ViroSample extends Component {
             .then(assets => { this.setState({ assets }) })
     }
 
+    checkToken = () => {
+        // token = AsyncStroage.getItem('token')
 
-
-    _getHomeScreen = () => {
+            token = AsyncStroage.setItem('token', "hi")
+            if (token !== ''){
+                this.setState({
+                    token
+                })
+            }
+        }
+    }
+    // setToken
+    //
+    // removeToken
+    getHomeScreen = () => {
         return(
             <HomeScreen 
                 changeScreen={this.changeScreen}
@@ -49,7 +49,7 @@ export default class ViroSample extends Component {
         )
     }
 
-    _getLogin = () => {
+    getLogin = () => {
         return(
             <LoginScreen 
                 changeScreen={this.changeScreen}
@@ -57,7 +57,7 @@ export default class ViroSample extends Component {
         )
     }
 
-    _getSignIn = () => {
+    getSignIn = () => {
         return(
             <SignInScreen 
                 changeScreen={this.changeScreen}
@@ -65,15 +65,18 @@ export default class ViroSample extends Component {
         )
     }
 
-    _getARNavigator = () => {
+    getARNavigator = () => {
         return (
             <View style={styles.flexContainer}>
-                <ViroARSceneNavigator 
-                    style={styles.flexContainer}
-                    numberOfTrackedImages={2}
-                    viroAppProps={{assets: this.state.assets}}
-                    initialScene={{scene: InitialARScene, passProps:{assets:this.state.assets}}} 
-                />
+                {this.state.assets > 0
+                    ? <ViroARSceneNavigator 
+                        style={styles.flexContainer}
+                        numberOfTrackedImages={2}
+                        viroAppProps={this.state.assets}
+                        initialScene={{scene: InitialARScene}} 
+                    />
+                    : console.warn('error')
+                }
                 <Footer  
                     changeScreen={this.changeScreen}
                 />
@@ -87,25 +90,26 @@ export default class ViroSample extends Component {
         })
     }
 
-    _getScreen = () => {
+    getScreen = () => {
         switch (this.state.navigation) {
             case 'home': 
-                return this._getHomeScreen()
+                return this.getHomeScreen()
             case 'ar':
-                return this._getARNavigator()
+                return this.getARNavigator()
             case 'signIn':
-                return this._getSignIn()
+                return this.getSignIn()
             case 'logIn':
-                return this._getLogin()
+                return this.getLogin()
             default: 
-                return this._getLogin()
+                return this.getHomeScreen()
         }
     }
 
     render() {
-        return this._getScreen()
+        const { token } = this.state
+        console.warn(token)
+        console.warn(AsyncStorage.getItem('token'))
+        return this.getScreen() 
     }
-
 }
 
-module.exports = ViroSample

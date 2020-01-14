@@ -1,18 +1,40 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, TextInput, TouchableOpacity, Text, Button, Alert } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage';
 import { styles } from './styles'
+const BASE_URL = 'http://localhost:3000'
+const HEROKU = 'https://badges-1.herokuapp.com'
 
 export default class AuthForm extends Component {
 
     state ={
         username: '',
-        password: ''
+        password: '',
+        loggedIn: false
     }
 
     onLogin = ( event ) => {
         const { username, password } = this.state
         const { changeScreen } = this.props
-        changeScreen('home')
+        fetch(`${HEROKU}/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: {
+                    username: this.state.username,
+                    password: this.state.password
+                }
+            })
+        })
+            .then(response => response.json())
+            .then(response => AsyncStorage.setItem('token', JSON.stringify(response.token)))
+            .then(() => console.warn(AsyncStorage.getItem('token')))
+        // if (loggedIn) {
+
+        //     changeScreen('home')
+        // }
     }
 
     render(){
