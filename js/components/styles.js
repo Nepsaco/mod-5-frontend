@@ -11,6 +11,11 @@ const colors = {
 
 const styles = StyleSheet.create({
 
+    modal: {
+        flex:1,
+        backgroundColor: colors.dark,
+    },
+
     flexContainer: {
         flex: 1
     },
