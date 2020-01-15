@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { AppRegistry, Button, Text, View, StyleSheet, PixelRatio, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { AppRegistry, Modal, Button, Text, View, StyleSheet, PixelRatio, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { ViroARSceneNavigator } from 'react-viro';
-import AsyncStorage from '@react-native-community/async-storage';
+// import AsyncStorage from '@react-native-community/async-storage';
 import HomeScreen from './js/screens/HomeScreen'
 import LoginScreen from './js/screens/LoginScreen'
 import SignInScreen from './js/screens/SignInScreen'
@@ -15,32 +15,46 @@ const HEROKU = 'https://badges-1.herokuapp.com'
 
 export default class App extends Component {
     state = {
-        navigation: '',
-        users: [],
+        navigation: 'ar',
+        user: {},
         assets: [],
-        token: null
+        token: '',
+        loading: true
     }
 
     componentDidMount = () => {
         return fetch(`${HEROKU}/assets`)
             .then(response => response.json())
             .then(assets => { this.setState({ assets }) })
+            .then(this.checkLoading)
     }
 
     checkToken = () => {
-        // token = AsyncStroage.getItem('token')
-
-            token = AsyncStroage.setItem('token', "hi")
-            if (token !== ''){
-                this.setState({
-                    token
-                })
-            }
+        console.warn(this.state.token)
+        if (!this.state.token){
+            this.setState({
+                navigation: 'logIn'
+            })
+            // } else {
+            // this.setState({
+            //     token
+            // })
         }
     }
-    // setToken
-    //
-    // removeToken
+
+    setToken = (token) => {
+        this.setState({ token })
+    }
+
+    setUser = (user) => {
+        this.setState({ user })
+    }
+
+    removeToken = () => {
+        this.setState({token: ''})
+        // AsyncStorage.removeItem('token')
+    }
+
     getHomeScreen = () => {
         return(
             <HomeScreen 
@@ -53,6 +67,8 @@ export default class App extends Component {
         return(
             <LoginScreen 
                 changeScreen={this.changeScreen}
+                setUser={this.setUser}
+                setToken={this.setToken}
             />
         )
     }
@@ -61,6 +77,8 @@ export default class App extends Component {
         return(
             <SignInScreen 
                 changeScreen={this.changeScreen}
+                setUser={this.setUser}
+                setToken={this.setToken}
             />
         )
     }
@@ -68,20 +86,54 @@ export default class App extends Component {
     getARNavigator = () => {
         return (
             <View style={styles.flexContainer}>
-                {this.state.assets > 0
+                {!this.state.loading 
                     ? <ViroARSceneNavigator 
                         style={styles.flexContainer}
-                        numberOfTrackedImages={2}
+                        numberOfTrackedImages={1}
                         viroAppProps={this.state.assets}
                         initialScene={{scene: InitialARScene}} 
+                        autofocus={true}
                     />
-                    : console.warn('error')
+                    : console.warn(this.state.assets)
                 }
                 <Footer  
                     changeScreen={this.changeScreen}
                 />
             </View>
         ) 
+    }
+
+    getModal = () => {
+        return(
+            <View style={styles.modal}>
+                <Modal
+                    visible={this.state.loading}
+                    animationType='slide'
+                    transparent={true}
+                >
+                    <View style={styles.screenContainer} >
+                        <View style={styles.flexContainer}>
+                            <Text style={styles.titleText}>
+                                Loading...
+                            </Text>
+                        </View>
+                    </View>
+                </Modal>
+            </View>
+        )
+    }
+
+    checkLoading = () => {
+        if (this.state.assets.length > 0){
+            this.setState({
+                loading: false
+            })
+        } else {
+            setInterval(() =>{
+                console.warn('hi')
+                this.checkLoading()
+            }, 5000)
+        }
     }
 
     changeScreen = (screen) => {
@@ -101,15 +153,16 @@ export default class App extends Component {
             case 'logIn':
                 return this.getLogin()
             default: 
-                return this.getHomeScreen()
+                return this.getLogin()
         }
     }
 
-    render() {
-        const { token } = this.state
-        console.warn(token)
-        console.warn(AsyncStorage.getItem('token'))
-        return this.getScreen() 
+    render = () => {
+        return(
+            <>
+                {this.state.loading ? this.getModal() :this.getScreen()}
+            </>
+        ) 
     }
 }
 

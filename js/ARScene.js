@@ -35,6 +35,12 @@ export default class ARScene extends Component {
         targetImage: 'whaleshark'
     };
 
+    // makeNode = () => {
+    //     this.props.arSceneNavigator.viroAppProps
+
+
+    // }
+
     getARScene = () => {
         const { targetImage, runAnimation } = this.state
         // const { id, title, resource_url, social_url, website } = this.props.arSceneNavigator.viroAppProps['0']
@@ -48,7 +54,7 @@ export default class ARScene extends Component {
                 >
                     <ViroNode key="card">
                         <ViroNode
-                            opacity={0} position={[0, -0.02, 0]}
+                            opacity={0} position={[0, -0.025, 0]}
                             animation={{
                                 name:'animateImage',
                                 run: runAnimation
@@ -58,11 +64,8 @@ export default class ARScene extends Component {
                                 rotation={[-90, 0, 0]}
                                 height={0.03}
                                 width={0.05}
-                                style={styles.card}
+                                style={styles.cardWrapper}
                             >
-                                <ViroFlexView
-                                    style={styles.cardWrapper}
-                                >
                                     <ViroImage
                                         height={0.015}
                                         width={0.015}
@@ -70,34 +73,67 @@ export default class ARScene extends Component {
                                         source={require('./res/weworklogo.png')}
                                     />
                                     <ViroText
+                                        textLineBreakMode='None'
                                         textClipMode="None"
                                         text={'Wework'}
                                         scale={[.015, .015, .015]}
                                         style={styles.textStyle}
                                     />
-                                </ViroFlexView>
-                                <ViroFlexView
-                                    onTouch={() => Alert.alert("HI")}
-                                    style={styles.subText}
-                                >
-                                    <ViroText
-                                        width={0.01}
-                                        height={0.01}
-                                        textAlign="left"
-                                        textClipMode="None"
-                                        text={'@wework'}
-                                        scale={[.01, .01, .01]}
-                                        style={styles.textStyle}
-                                    />
-                                    <ViroImage
-                                        height={0.01}
-                                        width={0.01}
-                                        style={styles.image}
-                                        source={require('./res/Instagram.png')}
-                                    />
-                                </ViroFlexView>
                             </ViroFlexView>
                         </ViroNode>
+                        <ViroNode
+                            opacity={0} position={[0, -0.015, 0]}
+                            animation={{
+                                name:'animateImage',
+                                run: runAnimation
+                            }}
+                        >
+                            <ViroFlexView
+                                rotation={[-90, 0, 0]}
+                                height={0.03}
+                                width={0.05}
+                                style={styles.cardWrapper}
+                            >
+                                <ViroImage
+                                    height={0.015}
+                                    width={0.015}
+                                    style={styles.image}
+                                    source={require('./res/Instagram.png')}
+                                />
+                                <ViroText
+                                    textLineBreakMode='None'
+                                    textClipMode="None"
+                                    text={'@wework'}
+                                    scale={[.015, .015, .015]}
+                                    style={styles.textStyle}
+                                />
+                            </ViroFlexView>
+                        </ViroNode>
+                        {/* <ViroNode opacity={0} position={[0, -0.015, 0.01]} */}
+                        {/*     animation={{ */}
+                        {/*         name:'animateViro', */}
+                        {/*         run: runAnimation */}
+                        {/*     }} */}
+                        {/* > */}
+                        {/*     <ViroFlexView */}
+                        {/*         onTouch={() => Alert.alert("HI")} */}
+                        {/*         style={styles.cardWrapper} */}
+                        {/*     > */}
+                        {/*         <ViroImage */}
+                        {/*             height={0.01} */}
+                        {/*             width={0.01} */}
+                        {/*             style={styles.image} */}
+                        {/*             source={require('./res/Instagram.png')} */}
+                        {/*         /> */}
+                        {/*         <ViroText */}
+                        {/*             textLineBreakMode='None' */}
+                        {/*             textClipMode="None" */}
+                        {/*             text={'@wework'} */}
+                        {/*             scale={[.01, .01, .01]} */}
+                        {/*             style={styles.textStyle} */}
+                        {/*         /> */}
+                        {/*     </ViroFlexView> */}
+                        {/* </ViroNode> */}
                         <ViroNode opacity={0} position={[0, 0, 0]}
                             animation={{
                                 name:'animateViro',
@@ -225,13 +261,13 @@ export default class ARScene extends Component {
                                     style={styles.subText}
                                 >
                                     <ViroText
-                                    width={0.01}
-                                    height={0.01}
-                                    textAlign="left"
-                                    textClipMode="None"
-                                    text={'@WhaleShark'}
-                                    scale={[.01, .01, .01]}
-                                    style={styles.textStyle}
+                                        width={0.01}
+                                        height={0.01}
+                                        textAlign="left"
+                                        textClipMode="None"
+                                        text={'@WhaleShark'}
+                                        scale={[.01, .01, .01]}
+                                        style={styles.textStyle}
                                     />
                                     <ViroImage
                                         height={0.01}
@@ -506,31 +542,34 @@ export default class ARScene extends Component {
 
 const styles = StyleSheet.create({
     textStyle: {
-        flex: 1,
+        flex: .5,
         fontFamily: 'Roboto',
-        fontSize: 40,
+        fontSize: 70,
         color: '#ffffff',
         textAlignVertical: 'top',
         textAlign: 'left',
         fontWeight: 'bold',
     },
+
     card: {
-        flexDirection: 'column'
+        flexDirection: 'column',
     },
+
     cardWrapper: {
         flexDirection: 'row',
         alignItems: 'flex-start',
-        padding: 0.001,
+        padding: .001,
+        flex: .5 
+    },
+
+    image: {
         flex: .5
     },
-    image: {
-        padding:0.001,
-        flex: 1
-    },
+
     subText: {
-        flexDirection: 'column',
+        flexDirection: 'row',
         alignItems: 'flex-start',
-        justifyContent: 'flex-start',
+        padding: 0.001,
         flex: .5
     }
 });

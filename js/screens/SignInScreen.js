@@ -12,6 +12,7 @@ export default class SignInScreen extends Component {
 
 
     getSignIn = () => {
+        const { setUser, setToken, changeScreen } = this.props
         return(
             <KeyboardAvoidingView behavior='padding' style={styles.loginContainer}>
                 <View style={styles.loginContainer}>
@@ -25,7 +26,9 @@ export default class SignInScreen extends Component {
                     <View style={styles.formContainer}>
                         <AuthForm 
                             name={'SIGN UP'}
-                            changeScreen={this.props.changeScreen}
+                            changeScreen={changeScreen}
+                            setUser={setUser}
+                            setToken={setToken}
                         />
                         <View style={styles.buttonContainer}>
                             <TouchableOpacity style={styles.buttons} >
