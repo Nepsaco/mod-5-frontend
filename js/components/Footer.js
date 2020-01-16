@@ -12,6 +12,10 @@ export default class Foot extends React.Component{
         this.props.changeScreen('home')
     }
 
+    goToProfile = () => {
+        this.props.changeScreen('profile')
+    }
+
     render(){
         return(
             <View style={styles.footerContainer}>
@@ -34,7 +38,7 @@ export default class Foot extends React.Component{
                 <TouchableOpacity style={styles.tabBar} >
                     <Text 
                         style={styles.buttonText}
-                        onPress={this.goToAR}
+                        onPress={this.goToProfile}
                     >
                         PROFILE
                     </Text>

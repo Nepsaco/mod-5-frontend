@@ -12,15 +12,15 @@ export default class LoginScreen extends Component {
     getLogin = () => {
         const { setUser, setToken, changeScreen } = this.props
         return(
-            <KeyboardAvoidingView behavior='padding' style={styles.loginContainer}>
-                <View style={styles.loginContainer}>
-                    <View style={styles.logoContainer}>
-                        <Image 
-                            style={styles.logo}
-                            source={require('../res/download.jpeg')} 
-                        />
-                        <Text style={styles.title}>App to get a little more information</Text>
-                    </View>
+            <View style={styles.loginContainer}>
+                <View style={styles.logoContainer}>
+                    <Image 
+                        style={styles.logo}
+                        source={require('../res/download.jpeg')} 
+                    />
+                    <Text style={styles.title}>App to get a little more information</Text>
+                </View>
+                <KeyboardAvoidingView behavior='padding' style={styles.loginContainer}>
                     <View style={styles.formContainer}>
                         <AuthForm 
                             name={'LOGIN'}
@@ -29,19 +29,19 @@ export default class LoginScreen extends Component {
                             setToken={setToken}
                             login={true}
                         />
-                        <View style={styles.buttonContainer}>
-                            <TouchableOpacity style={styles.buttons} >
-                                <Text 
-                                    style={styles.buttonText}
-                                    onPress={this.goToSignIn}
-                                >
-                                    SIGN UP
-                                </Text>
-                            </TouchableOpacity>
-                        </View>
                     </View>
+                </KeyboardAvoidingView>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={styles.buttons} >
+                        <Text 
+                            style={styles.buttonText}
+                            onPress={this.goToSignIn}
+                        >
+                            SIGN UP
+                        </Text>
+                    </TouchableOpacity>
                 </View>
-            </KeyboardAvoidingView>
+            </View>
         )
     }
 

@@ -35,11 +35,11 @@ export default class AuthForm extends Component {
 
     onSignIn = ( event ) => {
         const { username, password } = this.state
-        const { changeScreen } = this.props
+        const { changeScreen, setUser, setToken } = this.props
         const user = { user: { username, password } }
         fetch(`${HEROKU}/users`, { method, headers, body: JSON.stringify(user) })
             .then(() => {
-                fetch(`${HEROKU}/login`, { fetchMethod, fetchHeaders, body: JSON.stringify(user) })
+                fetch(`${HEROKU}/login`, { method, headers, body: JSON.stringify(user) })
                     .then(handleResponse)
                     .then(response => { 
                         if ( response.error ) {
@@ -57,7 +57,8 @@ export default class AuthForm extends Component {
         const { password, username } = this.state
         const { name, login } = this.props
         return(
-            <View style={styles.topPadding}>
+            <View>
+                <View style={styles.buttonContainer}>
                 <TextInput 
                     style={styles.input} 
                     value={username}
@@ -86,6 +87,7 @@ export default class AuthForm extends Component {
                         {name} 
                     </Text>
                 </TouchableOpacity>
+                </View>
             </View>
         )
     }
