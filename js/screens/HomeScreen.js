@@ -6,11 +6,11 @@ import Footer from '../components/Footer'
 
 export default class HomeScreen extends Component {
 
-    getHomeSceen = () => {
+    getHomeScreen = () => {
         return (
             <View style={styles.screenContainer} >
                 <View style={styles.screenContainer} >
-                    <Text style={styles.titleText}>
+                    <Text style={[ styles.titleText, styles.topPadding ]}>
                         Welcome to Badge
                     </Text>
                 </View>
@@ -20,7 +20,7 @@ export default class HomeScreen extends Component {
     }
 
     render(){
-        return this.getHomeSceen()
+        return this.getHomeScreen()
     }
 
 }

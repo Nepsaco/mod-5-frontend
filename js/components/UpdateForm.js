@@ -1,0 +1,81 @@
+import React, { Component } from 'react'
+import { StyleSheet, View, TextInput, TouchableOpacity, Text, Button, Alert } from 'react-native'
+import { styles } from './styles'
+const BASE_URL = 'http://localhost:3000'
+const HEROKU = 'https://badges-1.herokuapp.com'
+
+const method = 'POST'
+const headers = {'Content-Type': 'application/json'}
+const handleResponse = (response) => response.json()
+
+export default class UpdateForm extends Component {
+
+    state ={
+        username: '',
+        password: '',
+    }
+
+    // onLogin = ( event ) => {
+    //     const { username, password } = this.state
+    //     const { changeScreen, setUser, setToken } = this.props
+    //     const user = { user: { username, password } }
+    //     fetch(`${HEROKU}/login`, { method, headers, body: JSON.stringify(user) })
+    //         .then(handleResponse)
+    //         .then(response => { 
+    //             if ( response.error ) {
+    //                 console.warn(response.error) 
+    //             } else {
+    //                 setUser({id: response.user_id,  username: response.username }) 
+    //                 setToken(response.token) 
+    //                 changeScreen('home') 
+    //             }
+    //         })
+    // }
+
+    onUpdate = () => {
+        const { toggleButton } = this.props
+        toggleButton()
+    }
+
+    render(){
+        const { password, username } = this.state
+        const { user } = this.props
+        return(
+            <View style={[styles.topPadding, styles.flexContainer]}>
+                <View style={styles.buttonContainer}>
+                    <TextInput 
+                        style={styles.input} 
+                        value={username}
+                        placeholder={Enter New Username}
+                        placeholderTextColor='rgba(255, 255, 255, 0.9)'
+                        returnKeyType='next'
+                        onChangeText={username => this.setState({ username })}
+                        onSubmitEdititng={() => this.passwordInput.focus()}
+                        required
+                    />
+                    <TextInput 
+                        style={styles.input} 
+                        value={password}
+                        placeholder={Enter New Password}
+                        secureTextEntry={true}
+                        placeholderTextColor='rgba(255, 255, 255, 0.9)'
+                        returnKeyType='go'
+                        onChangeText={password => this.setState({ password })}
+                        ref={(input) => this.passwordInput = input}
+                        required
+                    />
+                </View>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onUpdate} >
+                        <Text 
+                            style={styles.buttonText}
+                        >
+                            UPDATE
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        )
+    }
+}
+

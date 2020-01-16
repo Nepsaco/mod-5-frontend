@@ -12,12 +12,17 @@ const colors = {
 const styles = StyleSheet.create({
 
     modal: {
-        flex:1,
         backgroundColor: colors.dark,
     },
 
     flexContainer: {
         flex: 1
+    },
+
+    flexContainerCenter: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: colors.dark,
     },
 
     loginContainer: {
@@ -43,13 +48,14 @@ const styles = StyleSheet.create({
     },
 
     topPadding: {
-        padding: 20
+        marginTop: 20,
+        padding: 30
     },
 
     titleText: {
         color: colors.white,
         fontSize: 50,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
 
     screenOuter : {
@@ -116,7 +122,8 @@ const styles = StyleSheet.create({
 
     footerContainer: {
         flex: -1,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'center'
     },
 
     tabBar: {

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { AppRegistry, Modal, Button, Text, View, StyleSheet, PixelRatio, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { AppRegistry, ActivityIndicator, Modal, Button, Text, View, StyleSheet, PixelRatio, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { ViroARSceneNavigator } from 'react-viro';
 // import AsyncStorage from '@react-native-community/async-storage';
 import HomeScreen from './js/screens/HomeScreen'
 import LoginScreen from './js/screens/LoginScreen'
 import SignInScreen from './js/screens/SignInScreen'
-const InitialARScene = require('./js/ARScene');
+import ProfileScreen from './js/screens/ProfileScreen'
 import Footer from './js/components/Footer'
+const InitialARScene = require('./js/ARScene');
 import { styles } from './js/components/styles'
 
 const BASE_URL = 'http://localhost:3000'
@@ -15,7 +16,7 @@ const HEROKU = 'https://badges-1.herokuapp.com'
 
 export default class App extends Component {
     state = {
-        navigation: 'ar',
+        navigation: '',
         user: {},
         assets: [],
         token: '',
@@ -83,6 +84,16 @@ export default class App extends Component {
         )
     }
 
+    getProfile = () => {
+        return(
+            <ProfileScreen
+                changeScreen={this.changeScreen}
+                user={this.state.user}
+                removeToken={this.removeToken}
+            />
+        )
+    }
+
     getARNavigator = () => {
         return (
             <View style={styles.flexContainer}>
@@ -111,13 +122,9 @@ export default class App extends Component {
                     animationType='slide'
                     transparent={true}
                 >
-                    <View style={styles.screenContainer} >
-                        <View style={styles.flexContainer}>
-                            <Text style={styles.titleText}>
-                                Loading...
-                            </Text>
+                        <View style={styles.flexContainerCenter}>
+                            <ActivityIndicator size='large' color='#0f0'/>
                         </View>
-                    </View>
                 </Modal>
             </View>
         )
@@ -152,6 +159,8 @@ export default class App extends Component {
                 return this.getSignIn()
             case 'logIn':
                 return this.getLogin()
+            case 'profile':
+                return this.getProfile()
             default: 
                 return this.getLogin()
         }
