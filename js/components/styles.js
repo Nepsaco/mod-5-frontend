@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
 
     formContainer: {
         flex: 2,
-        padding: 10
+        padding: 10,
+        marginBottom: 40
     },
 
     logo: {
@@ -74,12 +75,12 @@ const styles = StyleSheet.create({
 
     input: {
         height: 40,
-        width: 150,
+        width: 250,
         backgroundColor: colors.grey,
         marginBottom: 10,
         color: colors.white,
         paddingHorizontal: 30,
-        opacity: 0.7
+        opacity: 0.7,
     },
 
     buttonText: {
@@ -103,7 +104,9 @@ const styles = StyleSheet.create({
 
     buttonContainer: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent:'center',
+        backgroundColor: colors.dark,
     },
 
     title: {
@@ -123,7 +126,8 @@ const styles = StyleSheet.create({
     footerContainer: {
         flex: -1,
         flexDirection: 'row',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: colors.dark,
     },
 
     tabBar: {

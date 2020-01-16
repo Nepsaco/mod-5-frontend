@@ -20,7 +20,7 @@ export default class ProfileScreen extends Component {
     }
 
     getProfileScreen = () => {
-        const { user, changeScreen } = this.props
+        const { user, changeScreen, setUser, setToken } = this.props
         return (
             <View style={styles.screenContainer} >
                 <View style={styles.screenContainer} >
@@ -50,6 +50,8 @@ export default class ProfileScreen extends Component {
                             user={user}
                             changeScreen={changeScreen}
                             toggleButton={this.toggleButton}
+                            setUser={setUser}
+                            setToken={setToken}
                             />
                     }
                 </View>

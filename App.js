@@ -89,6 +89,8 @@ export default class App extends Component {
             <ProfileScreen
                 changeScreen={this.changeScreen}
                 user={this.state.user}
+                setUser={this.setUser}
+                setToken={this.setToken}
                 removeToken={this.removeToken}
             />
         )
@@ -123,7 +125,7 @@ export default class App extends Component {
                     transparent={true}
                 >
                         <View style={styles.flexContainerCenter}>
-                            <ActivityIndicator size='large' color='#0f0'/>
+                            <ActivityIndicator size='large' color='#3282b8'/>
                         </View>
                 </Modal>
             </View>
