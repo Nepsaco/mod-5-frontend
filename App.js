@@ -16,7 +16,7 @@ const HEROKU = 'https://badges-1.herokuapp.com'
 
 export default class App extends Component {
     state = {
-        navigation: '',
+        navigation: 'ar',
         user: {},
         assets: [],
         token: '',
@@ -139,7 +139,6 @@ export default class App extends Component {
             })
         } else {
             setInterval(() =>{
-                console.warn('hi')
                 this.checkLoading()
             }, 5000)
         }
