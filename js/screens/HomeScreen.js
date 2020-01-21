@@ -13,6 +13,12 @@ export default class HomeScreen extends Component {
                     <Text style={[ styles.titleText, styles.topPadding ]}>
                         Welcome to Badge
                     </Text>
+                    <Text style={styles.mainText}>
+                        - Switch to AR mode. 
+                    </Text>
+                    <Text style={styles.mainText}>
+                        -Scan badges to display more information.
+                    </Text>
                 </View>
                 <Footer changeScreen={this.props.changeScreen}/>
             </View>

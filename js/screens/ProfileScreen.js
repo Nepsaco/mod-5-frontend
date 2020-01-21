@@ -27,6 +27,9 @@ export default class ProfileScreen extends Component {
                     <Text style={[ styles.titleText, styles.topPadding ]}>
                         Welcome {user.username}
                     </Text>
+                    <Text style={ styles.mainText }>
+                        Update your information below.
+                    </Text>
                     { this.state.displayButton
                         ? <View style={styles.buttonContainer}>
                             <TouchableOpacity style={styles.buttons} >

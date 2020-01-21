@@ -20,7 +20,6 @@ export default class SignInScreen extends Component {
                         style={styles.logo}
                         source={require('../res/Badge.png')} 
                     />
-                    <Text style={styles.title}>Sign Up</Text>
                 </View>
                 <KeyboardAvoidingView behavior='padding' style={styles.loginContainer}>
                     <View style={styles.formContainer}>

@@ -59,6 +59,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 
+    mainText: {
+        color: colors.light,
+        fontSize: 25,
+        padding: 30
+    },
+
     screenOuter : {
         flex : 1,
         flexDirection: 'row',
