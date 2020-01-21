@@ -16,7 +16,7 @@ const HEROKU = 'https://badges-1.herokuapp.com'
 
 export default class App extends Component {
     state = {
-        navigation: 'ar',
+        navigation: '',
         user: {},
         assets: [],
         token: '',

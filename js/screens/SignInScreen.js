@@ -18,7 +18,7 @@ export default class SignInScreen extends Component {
                 <View style={styles.logoContainer}>
                     <Image 
                         style={styles.logo}
-                        source={require('../res/download.jpeg')} 
+                        source={require('../res/Badge.png')} 
                     />
                     <Text style={styles.title}>Sign Up</Text>
                 </View>

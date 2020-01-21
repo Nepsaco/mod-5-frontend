@@ -16,9 +16,9 @@ export default class LoginScreen extends Component {
                 <View style={styles.logoContainer}>
                     <Image 
                         style={styles.logo}
-                        source={require('../res/download.jpeg')} 
+                        source={require('../res/Badge.png')} 
                     />
-                    <Text style={styles.title}>App to get a little more information</Text>
+                    <Text style={styles.title}>Scan badges to see more information</Text>
                 </View>
                 <KeyboardAvoidingView behavior='padding' style={styles.loginContainer}>
                     <View style={styles.formContainer}>

@@ -36,17 +36,82 @@ export default class ARScene extends Component {
     };
 
     // makeNode = () => {
-    //     this.props.arSceneNavigator.viroAppProps
-
-
+    //     const { runAnimation } = this.state
+    //     this.props.arSceneNavigator.viroAppProps.map(asset => {
+    //             <ViroARImageMarker target={asset.title}
+    //                 onAnchorFound={
+    //                     () => this.setState({
+    //                         runAnimation: true
+    //                     })}
+    //             >
+    //                 <ViroNode key="card">
+    //                     <ViroNode
+    //                         opacity={0} position={[0, -0.015, 0.02]}
+    //                         animation={{
+    //                             name:'animateImage',
+    //                             run: runAnimation
+    //                         }}
+    //                         style={styles.card}
+    //                     >
+    //                         <ViroFlexView
+    //                             rotation={[-90, 0, 0]}
+    //                             height={.065}
+    //                             width={.02}
+    //                             style={styles.cardWrapper}
+    //                         >
+    //                             <ViroImage
+    //                                 height={0.02}
+    //                                 width={0.02}
+    //                                 style={styles.image}
+    //                                 source={asset.resource_url}
+    //                             />
+    //                             <ViroText
+    //                                 textLineBreakMode='None'
+    //                                 textClipMode="None"
+    //                                 text={asset.title}
+    //                                 scale={[.015, .015, .015]}
+    //                                 style={styles.text}
+    //                             />
+    //                         </ViroFlexView>
+    //                         <ViroFlexView
+    //                             rotation={[-90, 0, 0]}
+    //                             height={0.03}
+    //                             width={0.05}
+    //                             style={styles.cardWrapper}
+    //                         >
+    //                             <ViroText
+    //                                 textLineBreakMode='None'
+    //                                 textClipMode="None"
+    //                                 text={`@${asset.title}`}
+    //                                 scale={[.015, .015, .015]}
+    //                                 style={styles.text}
+    //                             />
+    //                         </ViroFlexView>
+    //                     </ViroNode>
+    //                     <ViroNode opacity={0} position={[0, 0, 0]}
+    //                         animation={{
+    //                             name:'animateViro',
+    //                             run: runAnimation
+    //                         }}
+    //                     >
+    //                         <ViroText text={asset.website}
+    //                             rotation={[-90, 0, 0]}
+    //                             scale={[.01, .01, .01]}
+    //                             style={styles.text}
+    //                         />
+    //                     </ViroNode>
+    //                 </ViroNode>
+    //             </ViroARImageMarker>
+    //     })
     // }
 
     getARScene = () => {
         const { targetImage, runAnimation } = this.state
         // const { id, title, resource_url, social_url, website } = this.props.arSceneNavigator.viroAppProps['0']
         return(
-            <ViroNode>
-                <ViroARImageMarker target={'wework'}
+            <ViroNode> 
+                {/* {this.makeNode()} */}
+                <ViroARImageMarker target={'Wework'}
                     onAnchorFound={
                         () => this.setState({
                             runAnimation: true
@@ -110,7 +175,7 @@ export default class ARScene extends Component {
                         </ViroNode>
                     </ViroNode>
                 </ViroARImageMarker>
-                <ViroARImageMarker target={'wework'}
+                <ViroARImageMarker target={'Wework'}
                     onAnchorFound={
                         () => this.setState({
                             runAnimation: true
@@ -302,7 +367,7 @@ export default class ARScene extends Component {
                         </ViroNode>
                     </ViroNode>
                 </ViroARImageMarker>
-                <ViroARImageMarker target={'bredkrum'}
+                <ViroARImageMarker target={'Bredkrum'}
                     onAnchorFound={
                         () => this.setState({
                             runAnimation: true
@@ -366,7 +431,7 @@ export default class ARScene extends Component {
                         </ViroNode>
                     </ViroNode>
                 </ViroARImageMarker>
-                <ViroARImageMarker target={'zoom'}
+                <ViroARImageMarker target={'Zoom'}
                     onAnchorFound={
                         () => this.setState({
                             runAnimation: true
@@ -430,7 +495,7 @@ export default class ARScene extends Component {
                         </ViroNode>
                     </ViroNode>
                 </ViroARImageMarker>
-                <ViroARImageMarker target={'flatiron'}
+                <ViroARImageMarker target={'Flatiron School'}
                     onAnchorFound={
                         () => this.setState({
                             runAnimation: true
@@ -579,17 +644,17 @@ const styles = StyleSheet.create({
 });
 
 ViroARTrackingTargets.createTargets({
-    'flatiron': {
+    'Flatiron School': {
         source: require('./res/flatpic.JPG'),
         orientation: 'Up',
         physicalWidth: 0.0762
     }, 
-    'zoom': {
+    'Zoom': {
         source:  require('./res/zoom.JPG'),
         orientation: 'Up',
         physicalWidth: 0.1
     },
-    'bredkrum': {
+    'Bredkrum': {
         source:  require('./res/bredkrum.JPG'),
         orientation: 'Up',
         physicalWidth: 0.1
@@ -604,7 +669,7 @@ ViroARTrackingTargets.createTargets({
         orientation: 'Up',
         physicalWidth: 0.0762
     },
-    'wework': {
+    'Wework': {
         source:  require('./res/wework.JPG'),
         orientation: 'Up',
         physicalWidth: 0.0762
