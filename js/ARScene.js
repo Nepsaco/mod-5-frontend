@@ -431,7 +431,7 @@ export default class ARScene extends Component {
                         </ViroNode>
                     </ViroNode>
                 </ViroARImageMarker>
-                <ViroARImageMarker target={'Zoom'}
+                <ViroARImageMarker target={'Hashketeers'}
                     onAnchorFound={
                         () => this.setState({
                             runAnimation: true
@@ -456,12 +456,12 @@ export default class ARScene extends Component {
                                     height={0.02}
                                     width={0.02}
                                     style={styles.image}
-                                    source={require('./res/zoomlogo.png')}
+                                    source={require('./res/hasketeerslogo.png')}
                                 />
                                 <ViroText
                                     textLineBreakMode='None'
                                     textClipMode="None"
-                                    text={'Zoom'}
+                                    text={'Hasketeers'}
                                     scale={[.015, .015, .015]}
                                     style={styles.text}
                                 />
@@ -475,7 +475,7 @@ export default class ARScene extends Component {
                                 <ViroText
                                     textLineBreakMode='None'
                                     textClipMode="None"
-                                    text={'@Zoomus'}
+                                    text={'#Hasketeers'}
                                     scale={[.015, .015, .015]}
                                     style={styles.text}
                                 />
@@ -487,7 +487,7 @@ export default class ARScene extends Component {
                                 run: runAnimation
                             }}
                         >
-                            <ViroText text="www.zoom.us"
+                            <ViroText text="www.flatrionschool.com"
                                 rotation={[-90, 0, 0]}
                                 scale={[.01, .01, .01]}
                                 style={styles.text}
@@ -649,8 +649,8 @@ ViroARTrackingTargets.createTargets({
         orientation: 'Up',
         physicalWidth: 0.0762
     }, 
-    'Zoom': {
-        source:  require('./res/zoom.JPG'),
+    'Hashketeers': {
+        source:  require('./res/hasketeers.JPG'),
         orientation: 'Up',
         physicalWidth: 0.1
     },

@@ -37,31 +37,34 @@ export default class UpdateForm extends Component {
         const { password, username } = this.state
         const { user } = this.props
         return(
-            <View style={[styles.topPadding, styles.flexContainer]}>
-                <View style={styles.buttonContainer}>
-                    <TextInput 
-                        style={styles.input} 
-                        value={username}
-                        placeholder={'Enter New Username'}
-                        placeholderTextColor='rgba(255, 255, 255, 0.9)'
-                        returnKeyType='next'
-                        onChangeText={username => this.setState({ username })}
-                        onSubmitEdititng={() => this.passwordInput.focus()}
-                        required
-                    />
-                    <TextInput 
-                        style={styles.input} 
-                        value={password}
-                        placeholder={'Enter New Password'}
-                        secureTextEntry={true}
-                        placeholderTextColor='rgba(255, 255, 255, 0.9)'
-                        returnKeyType='go'
-                        onChangeText={password => this.setState({ password })}
-                        ref={(input) => this.passwordInput = input}
-                        required
-                    />
-                </View>
-                <KeyboardAvoidingView behavior='padding'>
+
+                <View style={[styles.topPadding, styles.flexContainer]}>
+            <KeyboardAvoidingView behavior='padding' style={styles.loginContainer}>
+                    <View style={styles.buttonContainer}>
+                        <TextInput 
+                            style={styles.input} 
+                            value={username}
+                            placeholder={'Enter New Username'}
+                            placeholderTextColor='rgba(255, 255, 255, 0.9)'
+                            returnKeyType='next'
+                            onChangeText={username => this.setState({ username })}
+                            onSubmitEditing={() => this.passwordInput.focus()}
+                            required
+                        />
+                        <TextInput 
+                            style={styles.input} 
+                            value={password}
+                            placeholder={'Enter New Password'}
+                            secureTextEntry={true}
+                            placeholderTextColor='rgba(255, 255, 255, 0.9)'
+                            returnKeyType='go'
+                            onChangeText={password => this.setState({ password })}
+                            ref={(input) => this.passwordInput = input}
+                            onSubmitEditing={this.onUpdate}
+                            required
+                        />
+                    </View>
+            </KeyboardAvoidingView>
                     <View style={styles.buttonContainer}>
                         <TouchableOpacity style={styles.buttons} onPress={this.onUpdate} >
                             <Text 
@@ -71,8 +74,7 @@ export default class UpdateForm extends Component {
                             </Text>
                         </TouchableOpacity>
                     </View>
-                </KeyboardAvoidingView>
-            </View>
+                </View>
         )
     }
 }

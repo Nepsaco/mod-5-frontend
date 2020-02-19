@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, TextInput, View, Button, Image, TouchableOpacity, TouchableHighlight, StyleSheet,ImageBackground } from 'react-native';
+import { Text, KeyboardAvoidingView, TextInput, View, Button, Image, TouchableOpacity, TouchableHighlight, StyleSheet,ImageBackground } from 'react-native';
 import { styles } from '../components/styles'
 import UpdateForm from '../components/UpdateForm'
 import Footer from '../components/Footer'

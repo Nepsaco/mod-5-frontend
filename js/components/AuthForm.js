@@ -66,7 +66,7 @@ export default class AuthForm extends Component {
                     placeholderTextColor='rgba(255, 255, 255, 0.9)'
                     returnKeyType='next'
                     onChangeText={username => this.setState({ username })}
-                    onSubmitEdititng={() => this.passwordInput.focus()}
+                    onSubmitEditing={() => this.passwordInput.focus()}
                     required
                 />
                 <TextInput 
