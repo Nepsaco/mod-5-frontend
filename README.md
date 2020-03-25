@@ -21,7 +21,7 @@ The backend is hosted on Heroku and link to the github is [here](https://github.
 
 ## More Info
 
-To watch a breif walkthrough go [here](https://www.youtube.com/watch?v=ka67j8G7SIs)
+To watch a breif walkthrough go [here](https://www.youtube.com/watch?v=4TeQ8aCeNAg)
 
 ## Upcoming Features
 
